@@ -983,6 +983,8 @@ header {
         justify-items: stretch !important;
         align-items: stretch !important;
         box-sizing: border-box !important;
+        list-style: none !important;
+        list-style-type: none !important;
     }
 
     .package-item {
@@ -2197,6 +2199,8 @@ header {
         justify-items: stretch !important;
         align-items: stretch !important;
         box-sizing: border-box !important;
+        list-style: none !important;
+        list-style-type: none !important;
     }
 
     .details-info-container .package-item {
@@ -2361,6 +2365,8 @@ header {
     justify-items: center;
     justify-content: center;
     padding: 0 10px;
+    list-style: none !important;
+    list-style-type: none !important;
 }
 
 .package-item {
@@ -2382,6 +2388,8 @@ header {
     max-width: 320px;
     cursor: pointer;
     backdrop-filter: blur(10px);
+    list-style: none !important;
+    list-style-type: none !important;
 }
 
 .package-item:hover {
