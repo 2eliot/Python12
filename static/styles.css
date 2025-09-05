@@ -971,41 +971,63 @@ header {
         flex-shrink: 0;
     }
 
-    /* Optimización de paquetes para móvil - 2 columnas centradas */
+    /* Optimización de paquetes para móvil - 2 columnas bien organizadas */
     .package-list {
         display: grid !important;
         grid-template-columns: 1fr 1fr !important; /* 2 columnas iguales */
-        gap: 8px !important; /* Gap reducido */
-        width: 120% !important; /* Aumentar al 120% del ancho disponible */
-        max-width: 500px !important; /* Ancho máximo aumentado a 500px */
+        gap: 12px !important; /* Gap aumentado para mejor separación */
+        width: 100% !important; /* Usar todo el ancho disponible */
+        max-width: 100% !important; /* Sin limitación de ancho máximo */
         margin: 0 auto !important; /* Centrar la grilla horizontalmente */
-        padding: 0 8px !important; /* Padding lateral reducido */
-        justify-items: stretch !important; /* Estirar items para llenar espacio */
+        padding: 0 10px !important; /* Padding lateral para no tocar los bordes */
+        justify-items: center !important; /* Centrar items en sus celdas */
         align-items: stretch !important; /* Estirar items verticalmente */
         box-sizing: border-box !important;
         justify-content: center !important; /* Centrar toda la grilla */
     }
 
     .package-item {
-        min-height: 180px !important; /* Altura mayor para aprovechar espacio */
-        padding: 8px 6px !important; /* Padding más compacto */
+        min-height: 200px !important; /* Altura aumentada para mejor proporción */
+        padding: 12px 8px !important; /* Padding más generoso */
         width: 100% !important; /* Ocupar todo el ancho de la columna */
-        max-width: none !important; /* Sin límite de ancho - ocupar todo el espacio */
+        max-width: 180px !important; /* Ancho máximo para mantener proporción */
         margin: 0 !important; /* Sin márgenes */
         box-sizing: border-box !important;
+        border-radius: 12px !important; /* Bordes más redondeados */
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+    }
+
+    .package-image-container {
+        flex: 1 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        margin-bottom: 8px !important;
+        min-height: 120px !important;
+        max-height: 120px !important;
     }
 
     .package-image-container .package-name img {
         width: 100% !important; /* Ancho completo del contenedor */
-        max-width: none !important; /* Sin limitación de ancho máximo */
-        height: 140px !important; /* Altura mayor para aprovechar espacio */
-        object-fit: cover;
+        max-width: 100% !important; /* Sin limitación de ancho máximo */
+        height: 100px !important; /* Altura fija para consistencia */
+        object-fit: contain !important; /* Mostrar imagen completa */
+        border-radius: 8px !important;
+    }
+
+    .package-footer {
+        flex-shrink: 0 !important;
+        margin-top: auto !important;
     }
 
     .package-price {
-        font-size: 16px !important; /* Precio legible */
+        font-size: 14px !important; /* Precio legible pero compacto */
         padding: 8px 12px !important; /* Padding ajustado */
         width: 100% !important; /* Ocupar todo el ancho disponible */
+        text-align: center !important;
+        border-radius: 8px !important;
     }
 
     .footer-nav {
@@ -1443,8 +1465,7 @@ header {
 
     /* Ajustes para pantallas extremadamente pequeñas */
     @media (max-width: 320px) {
-        .```
-.games-carousel-card,
+        .games-carousel-card,
         .todos-carousel-card {
             flex: 0 0 calc(62% - 6px); /* Mostrar 1.8 tarjetas en pantallas muy pequeñas */
             max-width: 150px;
@@ -2035,7 +2056,6 @@ header {
     .review-tabs {
         margin-bottom: 15px;
     }
-}d: linear-gradient(135deg, #007bff, #0056b3);
 }
 
 .product-tag.oferta {
@@ -2077,8 +2097,6 @@ header {
     flex-direction: column;
     gap: 4px;
     max-width: calc(100% - 16px);
-}card {
-    position: relative;
 }
 
 /* Versión desktop para imagen del producto seleccionado */
