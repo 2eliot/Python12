@@ -658,6 +658,11 @@ def init_db():
 def index():
     return render_template('index.html')
 
+@app.route('/healthz')
+def health_check():
+    """Endpoint de salud para Render"""
+    return "OK", 200
+
 # Manejador catch-all para rutas SPA - debe devolver siempre index.html
 @app.route('/<path:path>')
 def catch_all(path):

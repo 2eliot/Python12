@@ -3,7 +3,8 @@ services:
     name: inefablestore
     env: python
     buildCommand: pip install -r requirements_sqlite.txt
-    startCommand: gunicorn main:app --bind 0.0.0.0:$PORT
+    startCommand: bash -c "gunicorn main:app --bind 0.0.0.0:$PORT"
+    healthCheckPath: /healthz
     envVars:
       - key: PYTHON_VERSION
         value: 3.9.16
