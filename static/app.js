@@ -1717,17 +1717,12 @@ function generarHTMLDetalleProducto(producto) {
                      data-package-price="${precio}"
                      data-has-image="${tieneImagen}">
                     <div class="package-info">
-                        <div class="package-image-container">
-                            <div class="package-selection">
-                                <span class="package-radio">⚪</span>
-                            </div>
-                            <div class="package-name">
-                                ${iconoHtml}
-                            </div>
+                        <div class="package-text-container">
+                            <div class="package-name-text">${paquete.nombre}</div>
+                            <div class="package-price-display">${convertirPrecio(precio)}</div>
                         </div>
-                        <div class="package-title">${paquete.nombre}</div>
-                        <div class="package-footer">
-                            <div class="package-price">${convertirPrecio(precio)}</div>
+                        <div class="package-selection">
+                            <span class="package-radio">⚪</span>
                         </div>
                     </div>
                 </div>

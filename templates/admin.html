@@ -917,22 +917,43 @@ html
                         </div>
                         <div class="form-group">
                             <label>Paquetes</label>
-                            <div id="paquetes-container">
-                                <div class="paquete-item">
-                                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
-                                        <input type="number" placeholder="Orden" class="form-control paquete-orden" min="1" style="width: 80px;">
-                                        <input type="text" placeholder="Nombre del paquete" class="form-control paquete-nombre" style="flex: 1;">
-                                        <input type="number" step="0.01" placeholder="Precio" class="form-control paquete-precio" style="width: 120px;">
-                                    </div>
-                                    <div style="display: flex; align-items: center; gap: 10px;">
-                                        <input type="text" placeholder="URL del icono (opcional)" class="form-control paquete-imagen" style="flex: 1;" title="Pega aquí la URL de la imagen del paquete">
-                                        <div class="paquete-preview" style="width: 40px; height: 40px; border: 1px dashed #ddd; border-radius: 8px; display: flex; align-items: center; justify-content: center; background: #f8f9fa;">
-                                            <span style="font-size: 12px; color: #999;">📦</span>
-                                        </div>
+                            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 15px; border: 1px solid #e9ecef;">
+                                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                                    <span style="font-size: 20px;">📦</span>
+                                    <div>
+                                        <strong style="color: #2c3e50;">Configuración de Paquetes</strong>
+                                        <p style="margin: 0; font-size: 13px; color: #6c757d;">Cada paquete puede tener un icono personalizado que se mostrará en el sitio web</p>
                                     </div>
                                 </div>
                             </div>
-                            <button type="button" class="btn btn-warning" onclick="addPaquete()">➕ Agregar Paquete</button>
+                            <div id="paquetes-container">
+                                <div class="paquete-item" style="background: #ffffff; border: 2px solid #e9ecef; border-radius: 12px; padding: 15px; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+                                        <input type="number" placeholder="Orden" class="form-control paquete-orden" min="1" style="width: 80px;">
+                                        <input type="text" placeholder="Nombre del paquete (ej: 25 Diamantes)" class="form-control paquete-nombre" style="flex: 1;">
+                                        <input type="number" step="0.01" placeholder="Precio" class="form-control paquete-precio" style="width: 120px;">
+                                    </div>
+                                    <div style="background: #f8f9fa; padding: 12px; border-radius: 8px; border: 1px solid #dee2e6;">
+                                        <label style="font-weight: 600; color: #495057; margin-bottom: 8px; display: block;">🎨 Icono del Paquete</label>
+                                        <div style="display: flex; align-items: center; gap: 10px;">
+                                            <input type="text" placeholder="URL del icono seleccionado" class="form-control paquete-imagen" style="flex: 1;" title="URL de la imagen del paquete" readonly>
+                                            <button type="button" class="btn btn-primary" onclick="abrirGaleriaImagenes(this)" style="padding: 10px 15px; font-size: 14px; font-weight: 600;">
+                                                🖼️ Seleccionar Icono
+                                            </button>
+                                            <div class="paquete-preview" style="width: 50px; height: 50px; border: 2px dashed #ddd; border-radius: 10px; display: flex; align-items: center; justify-content: center; background: #ffffff; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                                                <span style="font-size: 16px; color: #999;">📦</span>
+                                            </div>
+                                            <button type="button" class="btn btn-warning" onclick="limpiarIconoPaquete(this)" style="padding: 10px 12px;" title="Limpiar icono">
+                                                🗑️
+                                            </button>
+                                        </div>
+                                        <small style="color: #6c757d; margin-top: 5px; display: block;">💡 Tip: Selecciona un icono que represente el paquete. Si no seleccionas ninguno, se mostrará solo el texto.</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-success" onclick="addPaquete()" style="padding: 12px 20px; font-size: 16px; font-weight: 600;">
+                                ➕ Agregar Nuevo Paquete
+                            </button>
                         </div>
                         <button type="submit" class="btn btn-success">💾 Guardar Producto</button>
                         <button type="button" class="btn btn-danger" onclick="hideCreateProductForm()">❌ Cancelar</button>
@@ -1882,26 +1903,51 @@ html
             const container = document.getElementById('paquetes-container');
             const paqueteDiv = document.createElement('div');
             paqueteDiv.className = 'paquete-item';
+            paqueteDiv.style.cssText = 'background: #ffffff; border: 2px solid #e9ecef; border-radius: 12px; padding: 15px; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);';
             paqueteDiv.innerHTML = `
-                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
                     <input type="number" placeholder="Orden" class="form-control paquete-orden" min="1" style="width: 80px;">
-                    <input type="text" placeholder="Nombre del paquete" class="form-control paquete-nombre" style="flex: 1;">
+                    <input type="text" placeholder="Nombre del paquete (ej: 25 Diamantes)" class="form-control paquete-nombre" style="flex: 1;">
                     <input type="number" step="0.01" placeholder="Precio" class="form-control paquete-precio" style="width: 120px;">
                 </div>
-                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
-                    <input type="text" placeholder="URL del icono (opcional)" class="form-control paquete-imagen" style="flex: 1;" title="URL de la imagen del paquete" readonly>
-                    <button type="button" class="btn btn-primary" onclick="abrirGaleriaImagenes(this)" style="padding: 8px 12px; font-size: 12px;">
-                        🖼️ Seleccionar
-                    </button>
-                    <div class="paquete-preview" style="width: 40px; height: 40px; border: 1px dashed #ddd; border-radius: 8px; display: flex; align-items: center; justify-content: center; background: #f8f9fa;">
-                        <span style="font-size: 12px; color: #999;">📦</span>
+                <div style="background: #f8f9fa; padding: 12px; border-radius: 8px; border: 1px solid #dee2e6;">
+                    <label style="font-weight: 600; color: #495057; margin-bottom: 8px; display: block;">🎨 Icono del Paquete</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <input type="text" placeholder="URL del icono seleccionado" class="form-control paquete-imagen" style="flex: 1;" title="URL de la imagen del paquete" readonly>
+                        <button type="button" class="btn btn-primary" onclick="abrirGaleriaImagenes(this)" style="padding: 10px 15px; font-size: 14px; font-weight: 600;">
+                            🖼️ Seleccionar Icono
+                        </button>
+                        <div class="paquete-preview" style="width: 50px; height: 50px; border: 2px dashed #ddd; border-radius: 10px; display: flex; align-items: center; justify-content: center; background: #ffffff; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                            <span style="font-size: 16px; color: #999;">📦</span>
+                        </div>
+                        <button type="button" class="btn btn-warning" onclick="limpiarIconoPaquete(this)" style="padding: 10px 12px;" title="Limpiar icono">
+                            🗑️
+                        </button>
+                        <button type="button" class="btn btn-danger" onclick="this.parentElement.parentElement.parentElement.remove()" style="padding: 10px 12px;" title="Eliminar paquete">
+                            ❌
+                        </button>
                     </div>
-                    <button type="button" class="btn btn-danger" onclick="this.parentElement.parentElement.remove()" style="margin-left: 10px;">❌ Quitar</button>
+                    <small style="color: #6c757d; margin-top: 5px; display: block;">💡 Tip: Selecciona un icono que represente el paquete. Si no seleccionas ninguno, se mostrará solo el texto.</small>
                 </div>
             `;
             container.appendChild(paqueteDiv);
+        }
 
+        // Función para limpiar icono de paquete
+        function limpiarIconoPaquete(boton) {
+            const container = boton.parentElement;
+            const input = container.querySelector('.paquete-imagen');
+            const preview = container.querySelector('.paquete-preview');
             
+            if (input) {
+                input.value = '';
+            }
+            
+            if (preview) {
+                preview.innerHTML = '<span style="font-size: 16px; color: #999;">📦</span>';
+            }
+            
+            showAlert('Icono del paquete eliminado');
         }
 
         document.getElementById('product-form').addEventListener('submit', async (e) => {
