@@ -3,7 +3,7 @@ services:
     name: inefablestore
     env: python
     buildCommand: pip install -r requirements_sqlite.txt
-    startCommand: python main_sqlite.py
+    startCommand: gunicorn --bind 0.0.0.0:$PORT main_sqlite:app
     envVars:
       - key: PYTHON_VERSION
         value: 3.9.16

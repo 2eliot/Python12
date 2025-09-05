@@ -1777,17 +1777,19 @@ def after_request(response):
         response.headers['Expires'] = '0'
     return response
 
+# Inicialización para producción (Gunicorn)
+# Crear directorio para imágenes
+os.makedirs('static/images', exist_ok=True)
+
+# Inicializar base de datos
+try:
+    init_db()
+    print("Base de datos SQLite inicializada correctamente")
+except Exception as e:
+    print(f"Error al inicializar la base de datos: {e}")
+
 if __name__ == '__main__':
-    # Crear directorio para imágenes
-    os.makedirs('static/images', exist_ok=True)
-
-    # Inicializar base de datos
-    try:
-        init_db()
-        print("Base de datos SQLite inicializada correctamente")
-    except Exception as e:
-        print(f"Error al inicializar la base de datos: {e}")
-
+    # Solo para desarrollo local
     port = int(os.environ.get('PORT', 5000))
     print(f'🚀 Iniciando servidor en puerto {port}')
     app.run(host='0.0.0.0', port=port, debug=False)
