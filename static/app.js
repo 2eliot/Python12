@@ -1715,8 +1715,9 @@ function generarHTMLDetalleProducto(producto) {
                      data-package-id="${paquete.id}" 
                      data-package-name="${paquete.nombre}" 
                      data-package-price="${precio}"
-                     data-has-image="${tieneImagen}">
-                    <div class="package-info">
+                     data-has-image="${tieneImagen}"
+                     style="list-style: none !important; list-style-type: none !important;">
+                    <div class="package-info" style="list-style: none !important;">
                         <div class="package-text-container">
                             <div class="package-name-text">${paquete.nombre}</div>
                             <div class="package-price-display">${convertirPrecio(precio)}</div>
