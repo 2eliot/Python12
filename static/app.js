@@ -1722,7 +1722,7 @@ function generarHTMLDetalleProducto(producto) {
                             <div class="package-name-text">${paquete.nombre}</div>
                             <div class="package-price-display">${convertirPrecio(precio)}</div>
                         </div>
-                        <div class="package-selection">
+                        <div class="package-selection" style="display: none;">
                             <span class="package-radio">⚪</span>
                         </div>
                     </div>
